@@ -7,4 +7,11 @@ class Client < ApplicationRecord
             membership.gym_id
         end
     end
+
+    def total
+        charges = self.memberships.map do |membership|
+            membership.charge
+        end
+        charges.sum
+    end
 end
